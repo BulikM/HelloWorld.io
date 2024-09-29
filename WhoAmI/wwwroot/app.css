@@ -1,0 +1,11 @@
+.border-bottom-blossom {
+    border-bottom: 2px solid #ffb7c5;
+}
+
+.text-blossom {
+   color: #ffb7c5;
+}
+
+img{
+    object-fit: scale-down;
+}

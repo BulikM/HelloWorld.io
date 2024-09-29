@@ -1,0 +1,47 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+     <main class="container-fluid m-0 p-0 overflow-hidden vh-100">
+        <div class="border-bottom-blossom p-2 mt-lg-0 d-md-flex align-content-between justify-content-between text-center bg-white position-sticky">
+            
+            <a href="" class="px-3 col-12 col-md-2">
+                <img src="Images/MarilynBlossemRoze.png" alt="Marilyn" class="img-fluid" style="height:4rem" />
+            </a>
+  
+            <ul class="d-flex flex-row list-unstyled justify-content-evenly flex-wrap col-10 m-0 align-content-around">
+                <li class="px-4">Marilyn Bulik</li>
+                <span class="text-blossom d-none d-lg-block">|</span>
+                <li class="px-4">Geboren op 05&sol;10&sol;1988</li>
+                <span class="text-blossom d-none d-lg-block">|</span>
+                <li class="px-4">
+                    <a href="tel:+32495886463" class="text-body text-decoration-underline">0495&sol;88&period;64&period;63</a>
+                </li>
+                <span class="text-blossom d-none d-lg-block">|</span>
+                <li class="px-4">
+                    <a href="mailto: marilynbulik@gmail.com" class="text-decoration-underline text-body">marilynbulik@gmail.com</a>
+                </li>
+                <span class="text-blossom d-none d-lg-block">|</span>
+                <li class="px-4">
+                    <a href="https://www.linkedin.com/in/marilyn-b-a87159328/" class="text-decoration-none">
+                        <img src="Images/Linkedin_Blossom.png" alt="Linkedin" class="img-fluid" style="width:1.5rem" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex">
+            <div class="sidebar col-lg-2">
+                <NavMenu />
+            </div>
+            <article id="content" class="content p-0 col-lg-10 overflow-scroll">
+                @Body
+            </article>
+        </div>
+  
+    </main>
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

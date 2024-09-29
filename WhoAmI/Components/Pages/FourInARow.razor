@@ -1,0 +1,94 @@
+﻿@page "/FourInARow"
+@rendermode InteractiveServer
+@using Four_In_A_Row.Models
+<PageTitle>Home</PageTitle>
+
+
+
+<div class="p-3">
+    <h1 class="text-blossom">4 in a row</h1>
+    <div class="d-lg-flex">
+        <div class="col-12 col-lg-8">
+            @if (gameboard.Winner() != gameboard.player.Id && gameboard.Draw() == false)
+            {
+                <h4>@(gameboard.player.Name) aan zet.</h4>
+                <div id="Gameboard" class="d-flex row m-1 mt-3 align-content-center" style="max-width: 650px">
+                    @for (int column = 0; column < Gameboard.columnCount; column++)
+                    {
+                        var capture = column;
+                        <div class="bg-primary card col rounded-0">
+                            <button class="btn text-center " @onclick="() => gameboard.Turn(capture)">
+
+                                @for (var row = 0; row < Gameboard.rowCount; row++)
+                                {
+                                    var place = gameboard.places[row, column];
+
+                                    if (place != 0)
+                                    {
+
+                                        <div class="rounded-circle card-body my-2 @(place == Gameboard.player1.Id ? "bg-danger" : "bg-warning")">
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="rounded-circle bg-white card-body my-2">
+                                        </div>
+                                    }
+
+                                }
+                            </button>
+                        </div>
+                    }
+                    <p class="text-danger">@gameboard.errorMessage</p>
+                </div>
+            }
+            else
+            {
+                if (gameboard.Draw())
+                {
+                    <p>Gelijk spel</p>
+                }
+                else
+                {
+                    <span class="visually-hidden">@gameboard.Score(gameboard.player)</span>
+                    <h1>Proficiat @(gameboard.player.Name) is de winnaar </h1>
+                }
+                <bnt @onclick="() => gameboard.Restart()" class="btn btn-primary">Opnieuw</bnt>
+            }
+        </div>
+        <div class="col-12 col-lg-4 justify-content-evenly text-center p-3 pt-lg-5">
+
+            <div class="d-flex row justify-content-between">
+                <div class="input-group mb-3">
+                    <input class="form-control" id="Payer1" @bind="Gameboard.player1.Name" />
+                    <span class="input-group-text p-0" id="basic-addon1">
+                        <button type="button" class="btn" @onclick="()=> gameboard.ChangeName(Gameboard.player1, Gameboard.player1.Name)">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                    </span>
+                    <div class="m-2"></div>
+                    <input class="form-control" id="Payer1" @bind="Gameboard.player2.Name" />
+                    <span class="input-group-text" id="basic-addon1">
+                        <button type="button" class="btn" @onclick="()=> gameboard.ChangeName(Gameboard.player2, Gameboard.player2.Name)">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                    </span>
+                </div>
+                <p class="col">@Gameboard.player1.Score</p>
+                <p class="col">@Gameboard.player2.Score</p>
+                <bnt @onclick="() => gameboard.Reset()" class="btn btn-primary">Nieuw spel</bnt>
+            </div>
+        </div>
+    </div>
+  
+</div>
+
+
+
+
+@code {
+    Gameboard gameboard = new Gameboard();
+
+
+}
+
